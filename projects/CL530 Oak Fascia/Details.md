@@ -30,7 +30,7 @@ This is followed by the same finish I apply to all of my Oak projects; Danish Oi
 
 The factory fascia is just stuck on with double-sided tape, so I used the same method. I understand in more recent models the facisas.
 
-> One of the wierd things about these cases is there have been at least two revisions; one to correct a major fitment issue (which unfortunately both of my cases have) and another to change the fascia mounting. However Sliger don't acknowledge this on their site; they even have a 'Rev Control' section explicitly stating there have been no revisions, which is untrue
+> One of the wierd things about these cases is there have been at least _two_ revisions; one to correct a major motherboard fitment issue (which unfortunately both of my cases have) and another to change the fascia mounting. However Sliger's product page has a 'Rev Control' section that explicitly states there have been _no revisions_. Since they evidently didn't issue a recall, this is incredibly stupid and misleading
 
 ### Making Another (With Front I/O)
 Having posted pictures of the first fascia on the [Sliger Sub-Reddit](), I was contacted by another case owner wanting the same thing for theirs; only with front I/O. Having enjoed the first build, and considering adding I/O to my own fascia, I agreed to assemble another for the Redditor.
