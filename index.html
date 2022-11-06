@@ -10,14 +10,10 @@
 			import {Markdown} from "/project-blog/classes/markdown.js";
 
 			async function getProjects() {
-				return await fetch('/project-blog/projects/')
-					.then(response => response.text())
-					.then((html) => {
-						return Array.from(
-							new DOMParser().parseFromString(html, 'text/html')
-								.getElementById('files')
-								.getElementsByTagName('a')
-						).map(link => link.href).slice(1);
+				return await fetch('/project-blog/projects/index.json')
+					.then(response => response.json())
+					.then((json) => {
+						return json.map(link => link.href).slice(1);
 					});
 			}
 
