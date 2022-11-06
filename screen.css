@@ -75,9 +75,11 @@ article > details > summary {
 	cursor: pointer;
 }
 
+article > details > summary::marker,
 article > details > summary::-webkit-details-marker {
 	display: none;
 }
+
 article > details > summary > figure {
 	margin-top: -15%;
 }
