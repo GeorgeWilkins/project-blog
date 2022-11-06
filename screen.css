@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Gaegu:400,700&display=swap');
+body {
+	font-family: 'Gaegu', cursive;
+	box-sizing: border-box;
+	background: url('./images/oak-tiled.jpg');
+}
+* { line-height: 30px; }
+summary, details { margin: 0; padding: 0; }
+h1, h2, h3, h4, p, ul, li, figcaption { margin: 0; padding: 0; color: rgba(0, 36, 90, 0.9); }
+
+h1 { font-size: 30px; }
+h2 { font-size: 28px; margin-bottom: -7px; padding-top: 67px;  margin-left: -150px; padding-left: 150px; background: linear-gradient(to bottom, #f9f9f9 86px, transparent 10px); }
+h3 { font-size: 25px; margin-bottom: -8px; padding-top: 8px; }
+h4 { font-size: 20px; margin-bottom: -8px; padding-top: 8px; }
+p { font-size: 20px; margin-bottom: 22px; margin-right: 30px; padding-top: 9px; }
+ul { margin-top: -30px; margin-left: 18px; padding-top: 8px; }
+ul > li { font-size: 20px; }
+blockquote { font-size: 20px; }
+figcaption { font-size: 25px; text-align: center; }
+a { text-decoration: none; color: inherit; border-bottom: 2px dotted; }
+nav {}
+article {
+	max-width: 960px;
+	margin: 60px auto 50px auto;
+	position: relative;
+	border-radius: 2px;
+}
+article {
+	filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+}
+article > details::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 140px;
+	height: calc(100% - 4px);
+	width: 1px;
+	background: #db4034;
+}
+article > details > summary::after {
+	content: "Read More...";
+	display: block;
+	font-size: 20px; font-weight: bold; margin-bottom: -10px; padding-top: 8px;
+}
+article > details::after {
+	content: '';
+	height: 30px;
+	width: 100%;
+	margin-top: -1px;
+	display: block;
+	background: linear-gradient(to right, #f9f9f9 140px, #db4034 140px, #db4034 141px, #F9F9FA 141px);
+	background-size: 100% 30px;
+	clip-path: url(#edge);
+}
+article > details[open] > summary::after {
+	display: none;
+}
+article > details[open]::after {
+	clip-path: none;
+}
+article > details > div {
+	margin-top: -31px;
+	padding: 0 0 30px 150px;
+	background: linear-gradient(to top, #f9f9f9 29px, #57c0d8 1px);
+	background-size: 100% 30px;
+}
+
+article > details > summary {
+	outline: none;
+	margin: 0;
+	padding: 0 0 30px 150px;
+	background: linear-gradient(to top, #f9f9f9 29px, #57c0d8 1px);
+	background-size: 100% 30px;
+	cursor: pointer;
+}
+
+article > details > summary::-webkit-details-marker {
+	display: none;
+}
+article > details > summary > figure {
+	margin-top: -15%;
+}
+article > details figure {
+	width: 40%;
+	height: auto;
+	padding: 2%;
+	margin: 0;
+	background-color: #ffffff;
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.3));
+	box-shadow: inset 2px 2px 10px rgba(0,0,0,0.1);
+	float: right;
+	position: relative;
+}
+article > details figure > img {
+	width: 100%;
+	height: auto;
+	background-color: #e6e6e6;
+}
+
+article > details blockquote {
+	height: auto;
+	width: 50%;
+	padding: 2%;
+	margin: 0 20px 0 -170px;
+	background-color: #efe758;
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.3));
+	float: left;
+}
