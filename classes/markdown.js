@@ -32,7 +32,7 @@ class Markdown {
 		md = md.replace(/^(.+)\n\-+/gm, '<h2>$1</h2>');
 		
 		// images
-		md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<figure><img src="./images/lazy.svg" data-lazy-src="' + (path ?? './') + '$2" alt="$1" class="lazy" /><figcaption>$1</figcaption></figure>');
+		md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<figure><img src="./images/lazy.svg" data-lazy-src="$2" alt="$1" class="lazy" /><figcaption>$1</figcaption></figure>');
 		
 		// links
 		md = md.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4" target="_blank">$1</a>');
