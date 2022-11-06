@@ -35,7 +35,7 @@ class Markdown
 
 		// Images
 
-		md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<figure><img onclick="expandImage(this.src);" src="./images/lazy.svg" data-lazy-src="$2" alt="$1" class="lazy" /><figcaption>$1</figcaption></figure>');
+		md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<figure><img src="./images/lazy.svg" data-lazy-src="$2" alt="$1" class="lazy" /><figcaption>$1</figcaption></figure>');
 		
 		// Links
 
