@@ -6,11 +6,11 @@
 		<link rel="stylesheet" href="screen.css">
 		<script type="module">
 
-			import {Project} from "/project-blog/classes/project.js";
-			import {Markdown} from "/project-blog/classes/markdown.js";
+			import {Project} from "./classes/project.js";
+			import {Markdown} from "./classes/markdown.js";
 
 			async function getProjects() {
-				return await fetch('/project-blog/projects/index.json')
+				return await fetch('./projects/index.json')
 					.then(response => response.json())
 					.then((projects) => {
 						if (projects === null || projects.length === 0) {
@@ -25,7 +25,7 @@
 				const projects = await getProjects();
 				const elements = await Promise.all(
 					await projects.map(async name => {
-						const path = "/project-blog/projects/" + name;
+						const path = "./projects/" + name;
 						const project = new Project(path);
 						return await project.getArticle();
 					})
