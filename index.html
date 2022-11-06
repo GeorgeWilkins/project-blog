@@ -6,11 +6,11 @@
 		<link rel="stylesheet" href="screen.css">
 		<script type="module">
 
-			import {Project} from "../classes/project.js";
-			import {Markdown} from "../classes/markdown.js";
+			import {Project} from "/project-blog/classes/project.js";
+			import {Markdown} from "/project-blog/classes/markdown.js";
 
 			async function getProjects() {
-				return await fetch('projects/')
+				return await fetch('/project-blog/projects/')
 					.then(response => response.text())
 					.then((html) => {
 						return Array.from(
