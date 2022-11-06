@@ -1,10 +1,14 @@
 import {Markdown} from './markdown.js';
 
-class Project {
-	constructor(path) {
+class Project
+{
+	constructor(path)
+	{
 		this.path = path;
 	}
-	async getArticle() {
+
+	async getArticle()
+	{
 		const summaryHTML = await fetch(`${this.path}/Summary.md`)
 			.then(response => response.text())
 			.then(markdown => Markdown.toHTML(markdown, `${this.path}/`));

@@ -9,7 +9,8 @@
 			import {Project} from "./classes/project.js";
 			import {Markdown} from "./classes/markdown.js";
 
-			async function getProjects() {
+			async function getProjects()
+			{
 				return await fetch('./projects/index.json')
 					.then(response => response.json())
 					.then((projects) => {
@@ -20,7 +21,8 @@
 					});
 			}
 
-			async function displayProjects() {
+			async function displayProjects()
+			{
 				const container = document.getElementById('projects');
 				const projects = await getProjects();
 				const elements = await Promise.all(
@@ -36,11 +38,13 @@
 				return elements;
 			}
 
-			function isTrue(value) {
+			function isTrue(value)
+			{
 				return ((value === 'true') || (value === 'True') || (value === '1') || (value === 1));
 			}
 
-			function lazyLoad(intersections) {
+			function lazyLoad(intersections)
+			{
 				intersections.forEach(intersection => {
 					const image = intersection.target;
 					if (intersection.intersectionRatio > 0) {
@@ -50,6 +54,11 @@
 						}
 					}
 				});
+			}
+
+			function expandImage(path)
+			{
+				console.log("EXPAND", path);
 			}
 
 			window.addEventListener('load', async () => {
