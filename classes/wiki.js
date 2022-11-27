@@ -17,7 +17,7 @@ class Wiki
     static async getPages()
     {
         const domParser = new DOMParser();
-        const indexHtml = await getIndex();
+        const indexHtml = await this.getIndex();
         const indexDocument = domParser.parseFromString(indexHtml, 'text/html');
         const contentElement = indexDocument.getElementById('wiki-content');
         return [...contentElement.querySelectorAll('a[href]')]
