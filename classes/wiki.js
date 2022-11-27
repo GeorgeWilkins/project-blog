@@ -2,22 +2,14 @@ import {Markdown} from './markdown.js';
 
 class Wiki
 {
-    static async getIndex(wikiUrl)
+    static async getPages(wikiUrl)
     {
-        return await fetch(wikiUrl)
+        const domParser = new DOMParser();
+        const indexHtml = await fetch(wikiUrl)
             .then(response => response.text())
-            .then(html => {
-                return html;
-            })
             .catch(error => {
                 console.error('Project Indexing Failed', error);
             });
-    }
-
-    static async getPages()
-    {
-        const domParser = new DOMParser();
-        const indexHtml = await this.getIndex();
         const indexDocument = domParser.parseFromString(indexHtml, 'text/html');
         const contentElement = indexDocument.getElementById('wiki-content');
         return [...contentElement.querySelectorAll('a[href]')]
