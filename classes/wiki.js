@@ -5,7 +5,10 @@ class Wiki
     static async getPages(wikiUrl)
     {
         const domParser = new DOMParser();
-        const indexHtml = await fetch(wikiUrl)
+        const indexHtml = await fetch(wikiUrl, {
+            method: 'GET',
+            mode: 'no-cors'
+          })
             .then(response => response.text())
             .catch(error => {
                 console.error('Project Indexing Failed', error);
@@ -22,7 +25,10 @@ class Wiki
 
 	static async getArticle(pageUrl)
 	{
-		const pageMarkdown = await fetch(`${pageUrl}.md`)
+		const pageMarkdown = await fetch(`${pageUrl}.md`, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
 			.then(response => response.text());
 
         const summaryMarkdown = pageMarkdown.split('###').shift();
