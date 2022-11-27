@@ -1,3 +1,0 @@
-## Flashforge Finder Heated Bed
-![Installed & Working](https://lh3.googleusercontent.com/pw/AL9nZEWPr5BHZC7bAG0s2PHlIB2HgqcF6PUuTJ_TP7kZSpww-TGfkWCrHbVjubBtF8IG2tzKzQyh8qagLg9fd8iQar3P95ajuNZ69g0fq2ynZwuvZXDP5aHZspR7AAHsL2-uy7Z8QiCW5o133HsVxlwQb2tz2g=w1218-h685-no)
-Wanting to use more exotic filaments and avoid the mess of glue for bed adhesion, I build and retrofit a heated bed to the Flashforge Finder.
