@@ -10,7 +10,7 @@ The website is a very simple and conventional collection of HTML, CSS and JS.
 
 However the content is dynamically loaded *client-side* from the project's [GitHub Wiki](https://github.com/GeorgeWilkins/project-blog/wiki) using JS.
 
-Because I don't have a home page in my Wiki, the default behaviour for GitHub is to display [a list of pages](https://github.com/GeorgeWilkins/project-blog/wiki), which I take advantage of by performing a JavaScript `fetch` to [retrieve the listing](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/project.js) and then iterate through the pages. This avoids needing to hard-code the projects into the codebase itself.
+The GitHub Wiki automatically generates a sidebar with [a list of pages](https://github.com/GeorgeWilkins/project-blog/wiki), which I take advantage of by performing a JavaScript `fetch` to [retrieve the listing](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/project.js) and then iterate through the pages. This avoids needing to hard-code the projects into the codebase itself.
 
 Building and storing my content in the Wiki also provides the ability to use GitHub's markdown formatting tools *and* the built-in image hosting feature, which provides easy drag-and-drop image uploads.
 
