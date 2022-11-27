@@ -32,4 +32,4 @@ Many of these projects relate to my passions, including performance cars, high f
 
 I document projects of note in the hope that they aid or inspire others looking to take on similar projects of their own.
 
-I welcome any questions you may have.
+I welcome any questions and suggestions you may have.
