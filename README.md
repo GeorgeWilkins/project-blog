@@ -6,21 +6,30 @@ It is also an experiment in hosting a blog-style website directly and exclusivel
 - Using [pages](https://pages.github.com/) to build and host the HTML/CSS/JS front end, which is responsible for parsing the Wiki into a stylised website
 
 ## How It Works
-The content is loaded client-side from the GitHub Wiki using JavaScript. Because I don't have a home page in my Wiki, the default behaviour for GitHub is to display a list of pages, which I take advantage of; A JavaScript `fetch` [retrieves the listing](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/project.js) and then iterates through the pages.
+The website is a very simple and conventional collection of HTML, CSS and JS.
 
-Each page name is prefixed by a type (e.g. `Project: ` or `Teardown: `) which allows the script to allocate the pages to appropriate sections. A crude [markdown parser](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/markdown.js) converts the retrieved Wiki [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) into HTML to display.
+However the content is dynamically loaded *client-side* from the project's [GitHub Wiki](https://github.com/GeorgeWilkins/project-blog/wiki) using JS.
 
-Any embedded images (e.g. project photographs) are also automatically parsed into `<img>` tags by the parser.
+Because I don't have a home page in my Wiki, the default behaviour for GitHub is to display [a list of pages](https://github.com/GeorgeWilkins/project-blog/wiki), which I take advantage of by performing a JavaScript `fetch` to [retrieve the listing](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/project.js) and then iterate through the pages. This avoids needing to hard-code the projects into the codebase itself.
+
+Building and storing my content in the Wiki also provides the ability to use GitHub's markdown formatting tools *and* the built-in image hosting feature, which provides easy drag-and-drop image uploads.
+
+Each Wiki page name is prefixed by a type (e.g. `Project: ` or `Teardown: `) which allows the script to allocate the pages to appropriate sections.
+
+A crude [markdown parser](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/markdown.js) converts the retrieved Wiki [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) into HTML to display. Any embedded images (e.g. project photographs) are also automatically parsed into `<img>` tags by the parser.
 
 The end result is a dynamic website hosted entirely on GitHub, with no external hosting resources needed.
 
-
 ## About Me
-I'm a web software developer by profession, but spend most of my free time working on hardware projects, including:
+I'm a software developer by profession, but spend most of my free time working on hardware projects, including:
 - Electronics (Repair, Modifications, Scratch-Builds)
 - Woodworking
 - Metalworking / Welding
 - 3D Printing
 - Laser Cutting
 
+Many of these projects relate to my passions, including performance cars, high fidelity audio, airsoft and interior/exterior design.
+
 I document projects of note in the hope that they aid or inspire others looking to take on similar projects of their own.
+
+I welcome any questions you may have.
