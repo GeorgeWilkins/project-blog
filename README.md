@@ -17,8 +17,8 @@ Building and storing my content in the Wiki also provides the ability to use Git
 Each Wiki page name is prefixed by a type (e.g. `Project: ` or `Teardown: `) which allows the script to allocate the pages to appropriate sections.
 
 > At this point we can either fetch the HTML version of the page and pluck out the already converted HTML, or add `.md` to the page URL and get the raw Markdown and parse it ourselves. For example:
-> - **HTML Page**: https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification
-> - **Markdown Document**: https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification.md
+> - **HTML Page**: [.../Project:-DT1770-Headset-Modification](https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification)
+> - **Markdown Document**: [.../Project:-DT1770-Headset-Modification.md](https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification.md)
 > 
 > I've chosen to use the cleaner Markdown version and parse it myself, as this seems the more flexible and efficient option; but I haven't performance tested the two approaches.
 
