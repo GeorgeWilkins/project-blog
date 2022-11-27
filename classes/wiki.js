@@ -2,14 +2,9 @@ import {Markdown} from './markdown.js';
 
 class Wiki
 {
-	constructor(path)
-	{
-		this.path = path;
-	}
-
-    async getIndex()
+    static async getIndex(wikiUrl)
     {
-        return await fetch(this.path)
+        return await fetch(wikiUrl)
             .then(response => response.text())
             .then(html => {
                 return html;
@@ -19,7 +14,7 @@ class Wiki
             });
     }
 
-    async getPages()
+    static async getPages()
     {
         const domParser = new DOMParser();
         const indexHtml = await getIndex();
@@ -33,7 +28,7 @@ class Wiki
             .filter(pageUrl => pageUrl.name !== 'Home');
     }
 
-	async getArticle(pageUrl)
+	static async getArticle(pageUrl)
 	{
 		const pageMarkdown = await fetch(`${pageUrl}.md`)
 			.then(response => response.text());
