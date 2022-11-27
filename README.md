@@ -16,6 +16,12 @@ Building and storing my content in the Wiki also provides the ability to use Git
 
 Each Wiki page name is prefixed by a type (e.g. `Project: ` or `Teardown: `) which allows the script to allocate the pages to appropriate sections.
 
+> At this point we can either fetch the HTML version of the page and pluck out the already converted HTML, or add `.md` to the page URL and get the raw Markdown and parse it ourselves. For example:
+> - **HTML Page**: https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification
+> - **Markdown Document**: https://raw.githubusercontent.com/wiki/GeorgeWilkins/project-blog/Project:-DT1770-Headset-Modification.md
+> 
+> I've chosen to use the cleaner Markdown version and parse it myself, as this seems the more flexible and efficient option; but I haven't performance tested the two approaches.
+
 A crude [markdown parser](https://github.com/GeorgeWilkins/project-blog/blob/stable/classes/markdown.js) converts the retrieved Wiki [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) into HTML to display. Any embedded images (e.g. project photographs) are also automatically parsed into `<img>` tags by the parser.
 
 The end result is a dynamic website hosted entirely on GitHub, with no external hosting resources needed.
