@@ -7,9 +7,12 @@ class Wiki
         const domParser = new DOMParser();
         const indexHtml = await fetch(wikiUrl, {
             method: 'GET',
-            mode: 'no-cors'
+//            mode: 'no-cors'
           })
-            .then(response => response.text())
+            .then(response => {
+                console.log(response.text());
+                return response.text();
+            })
             .catch(error => {
                 console.error('Project Indexing Failed', error);
             });
