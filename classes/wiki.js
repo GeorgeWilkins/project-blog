@@ -7,7 +7,7 @@ class Wiki
         const domParser = new DOMParser();
         const indexHtml = await fetch(wikiUrl, {
             method: 'GET',
-            mode: 'no-cors'
+//            mode: 'no-cors'
           })
             .then(response => response.text())
             .catch(error => {
