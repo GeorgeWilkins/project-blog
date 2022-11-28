@@ -9,13 +9,11 @@ class Wiki
             method: 'GET',
             mode: 'no-cors'
           })
-            .then(response => {
-                console.log(response.text());
-                return response.text();
-            })
+            .then(response => response.text())
             .catch(error => {
                 console.error('Project Indexing Failed', error);
             });
+console.log("TEXT", indexHtml);
         const indexDocument = domParser.parseFromString(indexHtml, 'text/html');
         const contentElement = indexDocument.getElementById('wiki-content');
         return [...contentElement.querySelectorAll('a[href]')]
