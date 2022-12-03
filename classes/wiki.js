@@ -2,84 +2,104 @@ import {Markdown} from './markdown.js';
 
 /* Example 'index.json' Contents
 [
-  {
-    "type": "directory",
-    "name": ".",
-    "contents": [
-      {
-        "type": "file",
-        "name": "Home.md"
-      },
-      {
-        "type": "file",
-        "name": "Project:-DT1770-Headset-Modification.md"
-      },
-      ...
-      {
-        "type": "file",
-        "name": "Project:-Touch-Screen-Coffee-Table.md"
-      },
-      {
-        "type": "file",
-        "name": "index.json"
-      }
-    ]
-  },
-  {
-    "type": "report",
-    "directories": 0,
-    "files": 10
-  }
+	{
+		"type": "directory",
+		"name": ".",
+		"contents": [
+			{
+				"type": "file",
+				"name": "Home.md"
+			},
+			{
+				"type": "file",
+				"name": "Project:-DT1770-Headset-Modification.md"
+			},
+			...
+			{
+				"type": "file",
+				"name": "Project:-Touch-Screen-Coffee-Table.md"
+			},
+			{
+				"type": "file",
+				"name": "index.json"
+			}
+		]
+	},
+	{
+		"type": "report",
+		"directories": 0,
+		"files": 10
+	}
 ]
 */
 
 class Wiki
 {
-    static async getPages(path)
-    {
-        const indexJson = await fetch(`${path}/index.json`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Project Indexing Failed', error);
-            });
-        return indexJson[0].contents
-            .map(entry => `${path}/${decodeURI(entry.name)}`)
-            .slice(1)
-            .filter(name => name.endsWith('.md'));
-    }
+	static projectPath = 'projects';
 
-	static async getArticle(path)
+	static async getPages()
 	{
-		const pageMarkdown = await fetch(path)
+		const indexJson = await fetch(`${this.projectPath}/index.json`)
+			.then(response => response.json())
+			.catch(error => {
+					console.error('Project Indexing Failed', error);
+					return false;
+			});
+		return indexJson[0].contents
+			.map(entry => `${this.projectPath}/${entry.name.replace('&amp;', '&')}`)
+			.slice(1)
+			.filter(name => name.endsWith('.md'));
+	}
+
+	static async getIntroduction()
+	{
+		const introductionMarkdown = await fetch(`${this.projectPath}/Home.md`)
 			.then(response => response.text());
 
-    const summaryMarkdown = pageMarkdown.split('###').shift();
-    const writeupMarkdown = `###${pageMarkdown.split('###').pop()}`;
+		const introductionHtml = Markdown.toHTML(introductionMarkdown);
+		const introductionElement = document.getElementById('introduction');
 
-    const summaryHtml = Markdown.toHTML(summaryMarkdown);
-    const writeupHtml = Markdown.toHTML(writeupMarkdown);
+		introductionElement.innerHTML = introductionHtml;
 
-    const article = document.createElement('article');
-		const summary = document.createElement('summary');
-		const details = document.createElement('details');
-		const writeup = document.createElement('div');
+		return introductionElement;
+	}
+
+	static async getProject(projectPath)
+	{
+		const pageMarkdown = await fetch(projectPath)
+			.then(response => response.text())
+			.catch(error => {
+				console.error('Project Loading Failed', error);
+				return false;
+			});
+
+		const summaryMarkdown = pageMarkdown.split('###').shift();
+		const writeupMarkdown = `###${pageMarkdown.split('###').pop()}`;
+
+		const summaryHtml = Markdown.toHTML(summaryMarkdown);
+		const writeupHtml = Markdown.toHTML(writeupMarkdown);
+
+		const articleElement = document.createElement('article');
+		const summaryElement = document.createElement('summary');
+		const detailsElement = document.createElement('details');
+		const writeupElement = document.createElement('div');
 		const articleRotation = 1.0;
 		const photographRotation = 5.0;
 		const blockquoteRotation = 0.5;
 
-    summary.innerHTML = summaryHtml;
-		writeup.innerHTML = writeupHtml;
+		summaryElement.innerHTML = summaryHtml;
+		writeupElement.innerHTML = writeupHtml;
 
-		article.append(details);
-		details.append(summary);
-		details.append(writeup);
+		articleElement.append(detailsElement);
+		detailsElement.append(summaryElement);
+		detailsElement.append(writeupElement);
 
-		article.style.transform = `rotate(${(Math.random() * articleRotation * 2) - articleRotation}deg)`;
-		Array.from(article.getElementsByTagName('figure')).forEach(figure => {
-			figure.style.transform = `rotate(${(Math.random() * photographRotation * 2) - photographRotation}deg)`;
+		articleElement.style.transform = `rotate(${(Math.random() * articleRotation * 2) - articleRotation}deg)`;
+		Array.from(articleElement.getElementsByTagName('figure')).forEach(figureElement => {
+			figureElement.style.transform = `rotate(${(Math.random() * photographRotation * 2) - photographRotation}deg)`;
 		});
-		Array.from(article.getElementsByTagName('blockquote')).forEach(blockquote => {
-			blockquote.style.transform = `rotate(${(Math.random() * blockquoteRotation * 2) - blockquoteRotation}deg)`;
+		Array.from(articleElement.getElementsByTagName('blockquote')).forEach(blockquoteElement => {
+			blockquoteElement.style.transform = `rotate(${(Math.random() * blockquoteRotation * 2) - blockquoteRotation}deg)`;
 		});
 
 		//details.setAttribute('open', true);
