@@ -104,7 +104,7 @@ class Wiki
 
 		//details.setAttribute('open', true);
 
-		return article;
+		return articleElement;
 	}
 }
 
