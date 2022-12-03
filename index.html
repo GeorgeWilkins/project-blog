@@ -6,7 +6,6 @@
 		<link rel="stylesheet" href="screen.css">
 		<script type="module">
 
-			import {Configuration} from "./classes/configuration.js";
 			import {Wiki} from "./classes/wiki.js";
 
 			function isTrue(value)
@@ -34,7 +33,8 @@
 
 			async function buildContent()
 			{
-				const pages = await Wiki.getPages(Configuration.wikiUrl);
+				const pages = await Wiki.getPages('/projects');
+console.log("pages", pages);
 				const elements = await Promise.all(
 					await pages.map(async ({ name, url }, index) => {
 						return await Wiki.getArticle(url);
