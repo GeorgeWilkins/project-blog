@@ -31,12 +31,24 @@ jobs:
         with:
           repository: ${{github.repository}}
           path: site
+          
+      - name: List Repository Files (Debug)
+        run: |
+          cd site
+          ls -a
+          echo ${{ env.GITHUB_WORKSPACE }}
 
       - name: Checkout Wiki
         uses: actions/checkout@v3
         with:
           repository: ${{github.repository}}.wiki
           path: wiki
+          
+      - name: List Wiki Files (Debug)
+        run: |
+          cd wiki
+          ls -a
+          echo ${{ env.GITHUB_WORKSPACE }}
 
       - name: Create Index JSON
         run: |
@@ -45,8 +57,8 @@ jobs:
           tree -J > index.json
           ls -a
           cat index.json
-          rsync -zarv --include="*.md" --include="*.json" --exclude="*" ./ "${{ env.GITHUB_WORKSPACE }}/projects"
           echo "${{ env.GITHUB_WORKSPACE }}/site/projects"
+          rsync -zarv --include="*.md" --include="*.json" --exclude="*" ./ ../site/projects
           cd "${{ env.GITHUB_WORKSPACE }}"
           ls -a
 
