@@ -72,7 +72,7 @@ class Wiki
 
 		article.append(details);
 		details.append(summary);
-		details.append(full);
+		details.append(writeup);
 
 		article.style.transform = `rotate(${(Math.random() * articleRotation * 2) - articleRotation}deg)`;
 		Array.from(article.getElementsByTagName('figure')).forEach(figure => {
