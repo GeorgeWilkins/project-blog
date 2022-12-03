@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - stable
-      
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -16,3 +16,9 @@ jobs:
         repo: "georgewilkins/project-blog"
         directory: "projects"
         token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Generate index.json
+      uses: actions/create-json-file@v1
+      with:
+        fileName: content/index.json
+        json: '["Home.md", "First-Page.md", "Second-Page.md", "Third-Page.md", "etc..."]'
