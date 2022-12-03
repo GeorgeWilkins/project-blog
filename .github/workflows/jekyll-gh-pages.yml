@@ -1,9 +1,9 @@
 name: Deploy GitHub Pages Site (Using Jekyll), With Indexed Wiki Markdown
 
 on:
-  # Uncomment For Auto-Deployment
-#  push:
-#    branches: ["stable"]
+  # Execute Upon Push
+  push:
+    branches: ["stable"]
 
   # Allow Manual Execution
   workflow_dispatch:
