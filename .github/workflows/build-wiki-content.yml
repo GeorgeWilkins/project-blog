@@ -21,3 +21,8 @@ jobs:
         ls -a
         tree -J > index.json
         ls -a
+        cat index.json
+        rsync -P *.{md,json} ${{ GITHUB_WORKSPACE }}/projects
+        cd ${{ GITHUB_WORKSPACE }}/projects
+        ls -a
+        
