@@ -36,8 +36,8 @@
 				const pages = await Wiki.getPages('projects');
 console.log("pages", pages);
 				const elements = await Promise.all(
-					await pages.map(async ({ name, url }, index) => {
-						return await Wiki.getArticle(url);
+					await pages.map(async (path, index) => {
+						return await Wiki.getArticle(path);
 					})
 				);
 				return elements;

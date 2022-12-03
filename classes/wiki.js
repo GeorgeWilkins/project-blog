@@ -42,9 +42,9 @@ class Wiki
             .catch(error => {
                 console.error('Project Indexing Failed', error);
             });
-console.log("INDEX", indexJson);
         return indexJson[0].contents
             .map(entry => `${path}/${entry.name}`)
+            .slice(1)
             .filter(name => name.endsWith('.md'));
     }
 
