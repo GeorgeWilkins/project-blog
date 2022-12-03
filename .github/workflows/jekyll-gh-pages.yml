@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy GitHub Pages Site (Using Jekyll)
+name: Deploy GitHub Pages Site (Using Jekyll), With Indexed Wiki Markdown
 
 on:
   # Runs on pushes targeting the default branch
@@ -36,7 +36,6 @@ jobs:
         run: |
           cd site
           ls -a
-          echo ${{ env.GITHUB_WORKSPACE }}
 
       - name: Checkout Wiki
         uses: actions/checkout@v3
@@ -48,26 +47,14 @@ jobs:
         run: |
           cd wiki
           ls -a
-          echo ${{ env.GITHUB_WORKSPACE }}
 
       - name: Create Index JSON
         run: |
           cd wiki
-          ls -a
           tree -J > index.json
-          ls -a
-          cat index.json
-          echo "${{ env.GITHUB_WORKSPACE }}/site/projects"
           rsync -zarv --include="*.md" --include="*.json" --exclude="*" ./ ../site/projects
           cd "${{ env.GITHUB_WORKSPACE }}"
-          ls -a
 
-    
-    
-    
-
-#      - name: Checkout
-#        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build With Jekyll
