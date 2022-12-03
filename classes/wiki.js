@@ -53,13 +53,13 @@ class Wiki
 		const pageMarkdown = await fetch(path)
 			.then(response => response.text());
 
-        const summaryMarkdown = pageMarkdown.split('###').shift();
-        const writeupMarkdown = `###${pageMarkdown.split('###').pop()}`;
+    const summaryMarkdown = pageMarkdown.split('###').shift();
+    const writeupMarkdown = `###${pageMarkdown.split('###').pop()}`;
 
-        const summaryHtml = Markdown.toHTML(summaryMarkdown);
-        const writeupHtml = Markdown.toHTML(writeupMarkdown);
+    const summaryHtml = Markdown.toHTML(summaryMarkdown);
+    const writeupHtml = Markdown.toHTML(writeupMarkdown);
 
-        const article = document.createElement('article');
+    const article = document.createElement('article');
 		const summary = document.createElement('summary');
 		const details = document.createElement('details');
 		const writeup = document.createElement('div');
@@ -67,8 +67,8 @@ class Wiki
 		const photographRotation = 5.0;
 		const blockquoteRotation = 0.5;
 
-        summary.innerHTML = summaryHTML;
-		writeup.innerHTML = writeupHTML;
+    summary.innerHTML = summaryHtml;
+		writeup.innerHTML = writeupHtml;
 
 		article.append(details);
 		details.append(summary);
