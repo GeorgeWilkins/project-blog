@@ -29,11 +29,6 @@ jobs:
         with:
           repository: ${{github.repository}}
           path: site
-          
-      - name: List Repository Files (Debug)
-        run: |
-          cd site
-          ls -a
 
       - name: Checkout Wiki
         uses: actions/checkout@v3
@@ -41,17 +36,12 @@ jobs:
           repository: ${{github.repository}}.wiki
           path: wiki
 
-      - name: List Wiki Files (Debug)
-        run: |
-          cd wiki
-          ls -a
-
       - name: Create Index JSON
         run: |
           cd wiki
           tree -J > index.json
           rsync -zarv --include="*.md" --include="*.json" --exclude="*" ./ ../site/projects
-          cd "${{ env.GITHUB_WORKSPACE }}"
+#          cd "${{ env.GITHUB_WORKSPACE }}"
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
