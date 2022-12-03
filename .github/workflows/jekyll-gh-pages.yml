@@ -1,10 +1,10 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy GitHub Pages Site (Using Jekyll)
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["stable"]
+#  push:
+#    branches: ["stable"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,7 +45,7 @@ jobs:
           tree -J > index.json
           ls -a
           cat index.json
-          rsync -zarv --include="*.md" --include="*.json" --exclude="*" --dry-run ./ "${{ env.GITHUB_WORKSPACE }}/projects"
+          rsync -zarv --include="*.md" --include="*.json" --exclude="*" ./ "${{ env.GITHUB_WORKSPACE }}/projects"
           echo "${{ env.GITHUB_WORKSPACE }}/site/projects"
           cd "${{ env.GITHUB_WORKSPACE }}"
           ls -a
@@ -58,12 +58,12 @@ jobs:
 #        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: Build with Jekyll
+      - name: Build With Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: "${{ env.GITHUB_WORKSPACE }}/site"
           destination: ./_site
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
 
   # Deployment job
