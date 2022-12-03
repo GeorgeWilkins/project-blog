@@ -33,7 +33,7 @@
 
 			async function buildContent()
 			{
-				const pages = await Wiki.getPages('/projects');
+				const pages = await Wiki.getPages('projects');
 console.log("pages", pages);
 				const elements = await Promise.all(
 					await pages.map(async ({ name, url }, index) => {
