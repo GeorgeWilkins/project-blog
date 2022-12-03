@@ -11,13 +11,13 @@ jobs:
     steps:
     
     - name: Obtain Wiki Files
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: ${{github.repository}}.wiki
         path: markdown
         
-    - name: Copy To Repository
+    - name: Create Index JSON
       run: |
-        cd markdown
-        echo "Debug..."
-        ls -a
+        ls -a markdown
+        tree -J markdown > index.json
+        ls -a markdown
