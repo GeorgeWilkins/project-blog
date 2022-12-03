@@ -39,12 +39,13 @@
 			async function buildIntroduction()
 			{
 				document.getElementById('introduction')	
-					.innerHTML = await Wiki.getIntroduction();
+					.replaceWith(await Wiki.getIntroduction());
 			}
 
 			async function buildProjects()
 			{
-				const pages = await Wiki.getPages();
+				const pages = await Wiki.getPages()
+					.filter(pageName => pageName.startsWith('Project:'));
 
 				document.getElementById('projects')
 					.append(...await Promise.all(

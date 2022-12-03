@@ -47,8 +47,8 @@ class Wiki
 			});
 		return indexJson[0].contents
 			.map(entry => `${this.projectPath}/${entry.name.replace('&amp;', '&')}`)
-			.slice(1)
-			.filter(name => name.endsWith('.md'));
+			.filter(pageName => pageName.endsWith('.md'))
+			.slice(1);
 	}
 
 	static async getIntroduction()
