@@ -1,12 +1,11 @@
-name: Sync Wiki
+name: Generate Content From Wiki
 
 on:
   push:
     branches:
       - stable
-
 jobs:
-  sync:
+  generate:
     runs-on: ubuntu-latest
     steps:
     
@@ -14,10 +13,11 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: ${{github.repository}}.wiki
-        path: markdown
+        path: wiki
         
     - name: Create Index JSON
       run: |
-        ls -a markdown
-        tree -J markdown > index.json
-        ls -a markdown
+        cd wiki
+        ls -a
+        tree -J > index.json
+        ls -a
