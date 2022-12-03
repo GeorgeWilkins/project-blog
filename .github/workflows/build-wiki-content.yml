@@ -8,7 +8,10 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-    
+
+    - name: Obtain Repository Files
+      uses: actions/checkout@v3
+
     - name: Obtain Wiki Files
       uses: actions/checkout@v3
       with:
@@ -22,7 +25,8 @@ jobs:
         tree -J > index.json
         ls -a
         cat index.json
-        rsync -zarv --include="*.md" --include="*.json" --exclude="*" "$PWD" "${{ env.GITHUB_WORKSPACE }}/projects"
-        cd "${{ env.GITHUB_WORKSPACE }}/projects"
+        rsync -zarv --include="*.md" --include="*.json" --exclude="*" --dry-run "$PWD" "${{ env.GITHUB_WORKSPACE }}/projects"
+        echo "${{ env.GITHUB_WORKSPACE }}/projects"
+        cd "${{ env.GITHUB_WORKSPACE }}"
         ls -a
         
