@@ -21,10 +21,3 @@ jobs:
         cd markdown
         echo "Debug..."
         ls -a
-        
-    - name: Generate Index
-      uses: jsdaniell/create-json@v1.2.1
-      with:
-        name: "index.json"
-        dir: "projects/"
-        json: '["foo"]'
