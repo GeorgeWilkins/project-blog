@@ -43,7 +43,7 @@ class Wiki
                 console.error('Project Indexing Failed', error);
             });
         return indexJson[0].contents
-            .map(entry => `${path}/${entry.name}`)
+            .map(entry => `${path}/${decodeURI(entry.name)}`)
             .slice(1)
             .filter(name => name.endsWith('.md'));
     }
@@ -54,20 +54,21 @@ class Wiki
 			.then(response => response.text());
 
         const summaryMarkdown = pageMarkdown.split('###').shift();
-        const detailsMarkdown = `###${pageMarkdown.split('###').pop()}`;
+        const writeupMarkdown = `###${pageMarkdown.split('###').pop()}`;
 
         const summaryHtml = Markdown.toHTML(summaryMarkdown);
-        const detailsHtml = Markdown.toHTML(detailsMarkdown);
+        const writeupHtml = Markdown.toHTML(writeupMarkdown);
 
         const article = document.createElement('article');
 		const summary = document.createElement('summary');
 		const details = document.createElement('details');
-		const full = document.createElement('div');
+		const writeup = document.createElement('div');
 		const articleRotation = 1.0;
 		const photographRotation = 5.0;
 		const blockquoteRotation = 0.5;
 
-		full.innerHTML = fullHTML;
+        summary.innerHTML = summaryHTML;
+		writeup.innerHTML = writeupHTML;
 
 		article.append(details);
 		details.append(summary);
