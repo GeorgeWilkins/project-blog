@@ -22,7 +22,7 @@ jobs:
         tree -J > index.json
         ls -a
         cat index.json
-        rsync -P *.{md,json} ${{ env.GITHUB_WORKSPACE }}/projects
-        cd ${{ env.GITHUB_WORKSPACE }}/projects
+        rsync -zarv --include="*.md" --include="*.json" --exclude="*" "$PWD" "${{ env.GITHUB_WORKSPACE }}/projects"
+        cd "${{ env.GITHUB_WORKSPACE }}/projects"
         ls -a
         
