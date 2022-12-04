@@ -44,9 +44,10 @@
 
 			async function buildProjects()
 			{
-				const pages = (await Wiki.getPages())
-					.filter(pageName => pageName.startsWith('Project:'));
-
+				let pages = await Wiki.getPages();
+console.log(pages);
+				pages = pages.filter(pageName => pageName.startsWith('Project:'));
+console.log(pages);
 				document.getElementById('projects')
 					.append(...await Promise.all(
 						await pages.map(async (projectPath, index) => {
