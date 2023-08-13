@@ -46,7 +46,7 @@
 			{
 				let pages = await Wiki.getPages();
 console.log(pages);
-				pages = pages.filter(pageName => pageName.startsWith('Project:'));
+				pages = pages.filter(pageName => pageName.includes('Project:'));
 console.log(pages);
 				document.getElementById('projects')
 					.append(...await Promise.all(
